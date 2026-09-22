@@ -646,16 +646,20 @@ focal_distance_0p5mhz_mm  = __FOCAL_05__;    // mm, focal distance this cone giv
 focal_distance_1p45mhz_mm = __FOCAL_145__;    // mm, focal distance this cone gives at 1.45 MHz — from calculator
 
 sleeve_inner_diameter = 40;    // mm, sleeve ID — wider than transducer so it slides on easily
-sleeve_depth          = 10;    // mm, how far sleeve covers transducer (min 6.35mm = 0.25")
+sleeve_depth          = 14;    // mm, how far sleeve covers transducer (min 6.35mm = 0.25"; raised from 10mm for O-ring/label clearance below)
 wall_thickness        = 2;     // mm, shell wall thickness (constant around sleeve/shelf/lip)
 
 shelf_step   = 0.6;            // mm, how far the internal stop-shelf protrudes inward from sleeve bore
 shelf_height = 1.0;            // mm, axial thickness of the stop-shelf
 
-oring_cs_diameter   = 2.0;     // mm, O-ring cross-section thickness
-oring_groove_depth  = 1.5;     // mm, radial depth of groove
-oring_groove_width  = 2.6;     // mm, axial width of groove (slightly > CS dia)
-oring_from_top      = 3.5;     // mm, distance from top face to groove center
+// O-ring: 36mm ID x 3.5mm CS (e.g. AS568 or metric 36x3.5). Groove sized for a static
+// radial seal against a ~36mm transducer-housing OD (== the O-ring's own relaxed ID)
+// with ~20% radial squeeze -- recompute oring_groove_depth if the actual housing OD differs.
+oring_id            = 36;      // mm, O-ring relaxed inner diameter
+oring_cs_diameter   = 3.5;     // mm, O-ring cross-section thickness
+oring_groove_depth  = 0.8;     // mm, radial depth of groove beyond sleeve_bore_r (~20% squeeze on OD side)
+oring_groove_width  = 4.55;    // mm, axial width of groove (1.3x CS, slight running clearance)
+oring_from_top      = 5.5;     // mm, distance from top face to groove center (raised from 3.5mm for the wider groove)
 boss_chamfer_len    = 1.5;     // mm, length of the tapered ramp blending sleeve OD into boss OD
 
 lip_height = 1.0;              // mm, axial height of retaining lip at top mouth
